@@ -13,11 +13,11 @@ fun AppNavigation(){
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = ScreenID.RegisterScreen.name){
         composable(ScreenID.RegisterScreen.name){
-            RegisterScreen()
+            RegisterScreen(navController)
         }
 
         composable(ScreenID.LoginScreen.name){
-            LoginScreen()
+            LoginScreen(navController)
         }
 
         composable(ScreenID.ResetPasswordScreen.name){
