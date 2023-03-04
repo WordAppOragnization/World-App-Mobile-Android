@@ -1,6 +1,7 @@
 package com.natiqhaciyef.wordlearningapp.view.screens.registration
 
 import android.widget.Space
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -18,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -33,14 +35,16 @@ import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.natiqhaciyef.wordlearningapp.R
 import com.natiqhaciyef.wordlearningapp.data.util.FontList
+import com.natiqhaciyef.wordlearningapp.ui.theme.AppDarkTeal
+import com.natiqhaciyef.wordlearningapp.ui.theme.AppLightTeal
 import com.natiqhaciyef.wordlearningapp.ui.theme.AppOrange
 import com.natiqhaciyef.wordlearningapp.ui.theme.AppTeal
 import com.natiqhaciyef.wordlearningapp.view.components.BottomShadow
 
 @Composable
 fun RegisterScreen() {
-    val email = remember{ mutableStateOf("") }
-    val password = remember{ mutableStateOf("") }
+    val email = remember { mutableStateOf("") }
+    val password = remember { mutableStateOf("") }
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -58,18 +62,18 @@ fun RegisterTopView() {
     )
 
     Spacer(modifier = Modifier.height(30.dp))
-    
+
     LottieAnimation(
         composition = composition,
         iterations = LottieConstants.IterateForever,
         modifier = Modifier
             .fillMaxWidth()
-            .height(280.dp)
+            .height(230.dp)
     )
-    
+
     Spacer(modifier = Modifier.height(10.dp))
     Text(
-        text = "Login",
+        text = "Register",
         fontSize = 25.sp,
         color = Color.Black,
         fontFamily = FontList.fontFamily,
@@ -78,7 +82,7 @@ fun RegisterTopView() {
         modifier = Modifier.fillMaxWidth()
     )
 
-    Spacer(modifier = Modifier.height(30.dp))
+    Spacer(modifier = Modifier.height(25.dp))
 
 }
 
@@ -87,7 +91,7 @@ fun RegisterTopView() {
 fun RegisterBodyView(
     email: MutableState<String> = mutableStateOf(""),
     password: MutableState<String> = mutableStateOf("")
-){
+) {
     var passwordVisible by remember { mutableStateOf(false) }
     Card(
         modifier = Modifier
@@ -102,7 +106,7 @@ fun RegisterBodyView(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Top
         ) {
-            Spacer(modifier = Modifier.height(50.dp))
+            Spacer(modifier = Modifier.height(40.dp))
 
             OutlinedTextField(
                 value = email.value,
@@ -137,7 +141,7 @@ fun RegisterBodyView(
 
             BottomShadow(padding = 23.dp)
 
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(5.dp))
 
             OutlinedTextField(
                 value = password.value,
@@ -191,68 +195,110 @@ fun RegisterBodyView(
 
             BottomShadow(padding = 23.dp)
 
-            Spacer(modifier = Modifier.height(40.dp))
-            
-            val context = LocalContext.current
-            Button(
-                modifier = Modifier
-                    .height(50.dp)
-                    .width(180.dp),
-                onClick = {
-                   // sign up panel
-                },
-                shape = RoundedCornerShape(10.dp),
-                colors = ButtonDefaults.buttonColors(
-                    backgroundColor = AppTeal
-                )
-            ) {
-                Text(
-                    text = "Register",
-                    fontSize = 17.sp,
-                    fontWeight = FontWeight.Bold,
-                )
-            }
+            Spacer(modifier = Modifier.height(35.dp))
 
-            BottomShadow(
-                modifier = Modifier
-                    .width(165.dp)
-                    .height(8.dp)
-                    .padding(horizontal = 0.dp)
-                    .background(
-                        brush = Brush.verticalGradient(
-                            colors = listOf(
-                                Color.Black.copy(alpha = 0.1f),
-                                Color.Transparent,
-                            )
-                        )
-                    )
-            )
-
+            BottomView()
             Spacer(modifier = Modifier.height(10.dp))
-            Row(
-                horizontalArrangement = Arrangement.Center,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = "Do you have an account?",
-                    fontWeight = FontWeight.SemiBold,
-                    color = Color.White,
-                    fontSize = 15.sp
-                )
 
-                Spacer(modifier = Modifier.width(8.dp))
-
-                Text(
-                    modifier = Modifier
-                        .clickable {
-                                   // go to login
-                        },
-                    text = "Sign in",
-                    color = AppTeal,
-                    fontSize = 15.sp,
-                    fontWeight = FontWeight.SemiBold,
-                )
-            }
         }
+    }
+}
+
+@Composable
+fun BottomView() {
+    val context = LocalContext.current
+    Button(
+        modifier = Modifier
+            .height(50.dp)
+            .width(180.dp),
+        onClick = {
+            // sign up panel
+        },
+        shape = RoundedCornerShape(10.dp),
+        colors = ButtonDefaults.buttonColors(
+            backgroundColor = AppTeal
+        )
+    ) {
+        Text(
+            text = "Register",
+            fontSize = 17.sp,
+            fontWeight = FontWeight.Bold,
+            color = Color.Black
+        )
+    }
+
+    BottomShadow(
+        modifier = Modifier
+            .width(165.dp)
+            .height(8.dp)
+            .padding(horizontal = 0.dp)
+            .background(
+                brush = Brush.verticalGradient(
+                    colors = listOf(
+                        Color.Black.copy(alpha = 0.1f),
+                        Color.Transparent,
+                    )
+                )
+            )
+    )
+
+    Spacer(modifier = Modifier.height(15.dp))
+
+    Text(
+        text = "Or sign up via",
+        fontSize = 15.sp,
+        fontWeight = FontWeight.SemiBold,
+        color = Color.White
+    )
+
+    Spacer(modifier = Modifier.height(10.dp))
+    Row(
+        modifier = Modifier
+            .fillMaxWidth(),
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.google_icon),
+            contentDescription = "Google icon",
+            modifier = Modifier
+                .size(45.dp)
+                .padding(top = 5.dp)
+        )
+
+        Spacer(modifier = Modifier.width(30.dp))
+
+        Image(
+            painter = painterResource(id = R.drawable.apple_icon),
+            contentDescription = "Apple icon",
+            modifier = Modifier.size(45.dp)
+        )
+    }
+
+    Spacer(modifier = Modifier.height(10.dp))
+
+    Row(
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(
+            text = "Do you have an account?",
+            fontWeight = FontWeight.SemiBold,
+            color = Color.White,
+            fontSize = 15.sp
+        )
+
+        Spacer(modifier = Modifier.width(10.dp))
+
+        Text(
+            modifier = Modifier
+                .clickable {
+                    // go to login
+                },
+            text = "Sign in",
+            color = AppLightTeal,
+            fontSize = 15.sp,
+            fontWeight = FontWeight.Bold,
+        )
     }
 }
