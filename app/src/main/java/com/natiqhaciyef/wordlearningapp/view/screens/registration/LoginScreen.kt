@@ -203,7 +203,21 @@ fun LoginBodyView(
 
             BottomShadow(padding = 23.dp)
 
-            Spacer(modifier = Modifier.height(35.dp))
+            Spacer(modifier = Modifier.height(3.dp))
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 25.dp)
+                    .clickable {
+                        navController.navigate(ScreenID.ResetPasswordScreen.name)
+                    },
+                text = "Forgot password ?",
+                fontSize = 15.sp,
+                fontWeight = FontWeight.SemiBold,
+                color = Color.White,
+                textAlign = TextAlign.End
+            )
+            Spacer(modifier = Modifier.height(20.dp))
 
             LoginBottomView(navController)
             Spacer(modifier = Modifier.height(10.dp))
@@ -252,7 +266,7 @@ fun LoginBottomView(
             )
     )
 
-    Spacer(modifier = Modifier.height(15.dp))
+    Spacer(modifier = Modifier.height(12.dp))
 
     Text(
         text = "Or sign in via",
@@ -261,7 +275,7 @@ fun LoginBottomView(
         color = Color.White
     )
 
-    Spacer(modifier = Modifier.height(10.dp))
+    Spacer(modifier = Modifier.height(8.dp))
     Row(
         modifier = Modifier
             .fillMaxWidth(),
