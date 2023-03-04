@@ -29,6 +29,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.LottieConstants
@@ -40,9 +41,12 @@ import com.natiqhaciyef.wordlearningapp.ui.theme.AppLightTeal
 import com.natiqhaciyef.wordlearningapp.ui.theme.AppOrange
 import com.natiqhaciyef.wordlearningapp.ui.theme.AppTeal
 import com.natiqhaciyef.wordlearningapp.view.components.BottomShadow
+import com.natiqhaciyef.wordlearningapp.view.navigation.ScreenID
 
 @Composable
-fun RegisterScreen() {
+fun RegisterScreen(
+    navController: NavController
+) {
     val email = remember { mutableStateOf("") }
     val password = remember { mutableStateOf("") }
     Column(
@@ -50,7 +54,7 @@ fun RegisterScreen() {
             .fillMaxSize()
     ) {
         RegisterTopView()
-        RegisterBodyView(email, password)
+        RegisterBodyView(email, password, navController)
     }
 }
 
@@ -61,7 +65,7 @@ fun RegisterTopView() {
         spec = LottieCompositionSpec.RawRes(R.raw.register_animation)
     )
 
-    Spacer(modifier = Modifier.height(30.dp))
+    Spacer(modifier = Modifier.height(40.dp))
 
     LottieAnimation(
         composition = composition,
@@ -86,11 +90,12 @@ fun RegisterTopView() {
 
 }
 
-@Preview
+//@Preview
 @Composable
 fun RegisterBodyView(
     email: MutableState<String> = mutableStateOf(""),
-    password: MutableState<String> = mutableStateOf("")
+    password: MutableState<String> = mutableStateOf(""),
+    navController: NavController
 ) {
     var passwordVisible by remember { mutableStateOf(false) }
     Card(
@@ -131,6 +136,8 @@ fun RegisterBodyView(
                 colors = TextFieldDefaults.outlinedTextFieldColors(
                     backgroundColor = Color.White,
                     textColor = Color.Black,
+                    focusedBorderColor = AppLightTeal,
+                    cursorColor = AppDarkTeal
                 ),
                 shape = RoundedCornerShape(10.dp),
                 textStyle = TextStyle.Default.copy(
@@ -169,7 +176,9 @@ fun RegisterBodyView(
                 colors = TextFieldDefaults.outlinedTextFieldColors(
                     backgroundColor = Color.White,
                     textColor = Color.Black,
-                    trailingIconColor = Color.Black
+                    trailingIconColor = Color.Black,
+                    focusedBorderColor = AppLightTeal,
+                    cursorColor = AppDarkTeal
                 ),
                 shape = RoundedCornerShape(10.dp),
                 textStyle = TextStyle.Default.copy(
@@ -197,7 +206,7 @@ fun RegisterBodyView(
 
             Spacer(modifier = Modifier.height(35.dp))
 
-            BottomView()
+            RegisterBottomView(navController)
             Spacer(modifier = Modifier.height(10.dp))
 
         }
@@ -205,7 +214,9 @@ fun RegisterBodyView(
 }
 
 @Composable
-fun BottomView() {
+fun RegisterBottomView(
+    navController: NavController
+) {
     val context = LocalContext.current
     Button(
         modifier = Modifier
@@ -293,7 +304,8 @@ fun BottomView() {
         Text(
             modifier = Modifier
                 .clickable {
-                    // go to login
+                    // go to register
+                   navController.navigate(ScreenID.LoginScreen.name)
                 },
             text = "Sign in",
             color = AppLightTeal,
