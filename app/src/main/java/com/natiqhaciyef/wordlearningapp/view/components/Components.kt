@@ -1,16 +1,34 @@
 package com.natiqhaciyef.wordlearningapp.view.components
 
+import androidx.compose.animation.core.*
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.airbnb.lottie.model.content.CircleShape
+import com.natiqhaciyef.wordlearningapp.data.model.NavItem
+import com.natiqhaciyef.wordlearningapp.ui.theme.AppDarkTeal
+import com.natiqhaciyef.wordlearningapp.ui.theme.AppLightTeal
+import com.natiqhaciyef.wordlearningapp.ui.theme.AppTeal
 
 @Composable
 fun BottomShadow(alpha: Float = 0.1f, height: Dp = 8.dp,
@@ -37,3 +55,81 @@ fun BottomShadow(modifier: Modifier) {
         modifier = modifier
     )
 }
+
+@Composable
+fun NavigationBar() {
+    BottomNavigation(
+        backgroundColor = Color.White,
+        elevation = 8.dp
+    ) {
+        BottomNavigationItem(
+            icon = { Icon(Icons.Filled.Home, contentDescription = "Home") },
+            label = { Text(text = "Home") },
+            selected = true,
+            onClick = {}
+        )
+        BottomNavigationItem(
+            icon = { Icon(Icons.Filled.Favorite, contentDescription = "Favorites") },
+            label = { Text(text = "Favorites") },
+            selected = false,
+            onClick = {}
+        )
+        BottomNavigationItem(
+            icon = { Icon(Icons.Filled.Person, contentDescription = "Profile") },
+            label = { Text(text = "Profile") },
+            selected = false,
+            onClick = {}
+        )
+        BottomNavigationItem(
+            icon = { Icon(Icons.Filled.Settings, contentDescription = "Settings") },
+            label = { Text(text = "Settings") },
+            selected = false,
+            onClick = {}
+        )
+    }
+}
+
+@Composable
+fun NavigationBarAnimation() {
+    val navItems = listOf(
+        NavItem(Icons.Filled.Home, "Home"),
+        NavItem(Icons.Filled.Favorite, "Favorites"),
+        NavItem(Icons.Filled.Person, "Profile"),
+        NavItem(Icons.Filled.Settings, "Settings"),
+    )
+    var selectedTabIndex = remember { mutableStateOf(0) }
+
+    BottomNavigation(
+        backgroundColor = Color.White,
+        elevation = 8.dp,
+    ) {
+        navItems.forEachIndexed { index, item ->
+            val selected = index == selectedTabIndex.value
+            BottomNavigationItem(
+                icon = {
+                    Box(contentAlignment = Alignment.BottomCenter) {
+                        Icon(item.icon, contentDescription = item.title, modifier = Modifier.padding(bottom = 3.dp))
+                        if (selected) {
+                            Box(
+                                Modifier
+                                    .fillMaxSize()
+                                    .alpha(0.4f)
+                                    .background(color = AppDarkTeal)
+                            )
+                        }
+                    }
+                },
+                label = { Text(item.title) },
+                selected = selected,
+                onClick = {
+                    if (!selected) {
+                        selectedTabIndex.value = index
+                    }
+                },
+                alwaysShowLabel = false
+            )
+        }
+    }
+}
+
+

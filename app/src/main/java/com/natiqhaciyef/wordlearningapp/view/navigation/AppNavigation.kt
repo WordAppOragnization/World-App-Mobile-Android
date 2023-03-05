@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.natiqhaciyef.wordlearningapp.view.screens.home.MainScreen
 import com.natiqhaciyef.wordlearningapp.view.screens.registration.LoginScreen
 import com.natiqhaciyef.wordlearningapp.view.screens.registration.RegisterScreen
 import com.natiqhaciyef.wordlearningapp.view.screens.registration.ResetPasswordScreen
@@ -22,6 +23,10 @@ fun AppNavigation(){
 
         composable(ScreenID.ResetPasswordScreen.name){
             ResetPasswordScreen()
+        }
+
+        composable(ScreenID.HomeScreen.name){
+            MainScreen()
         }
     }
 
