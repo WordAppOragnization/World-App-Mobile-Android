@@ -1,10 +1,12 @@
 package com.natiqhaciyef.wordlearningapp.view.components
 
 import androidx.compose.animation.core.*
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
@@ -16,17 +18,23 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.airbnb.lottie.model.content.CircleShape
 import com.natiqhaciyef.wordlearningapp.data.model.NavItem
+import com.natiqhaciyef.wordlearningapp.data.model.WordModel
 import com.natiqhaciyef.wordlearningapp.ui.theme.AppDarkTeal
 import com.natiqhaciyef.wordlearningapp.ui.theme.AppLightTeal
 import com.natiqhaciyef.wordlearningapp.ui.theme.AppTeal
 
 @Composable
-fun BottomShadow(alpha: Float = 0.1f, height: Dp = 8.dp,
-                 padding: Dp = 0.dp) {
+fun BottomShadow(
+    alpha: Float = 0.1f, height: Dp = 8.dp,
+    padding: Dp = 0.dp
+) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -100,7 +108,11 @@ fun NavigationBarAnimation(selectedTabIndex: MutableState<Int>) {
             BottomNavigationItem(
                 icon = {
                     Box(contentAlignment = Alignment.BottomCenter) {
-                        Icon(item.icon, contentDescription = item.title, modifier = Modifier.padding(bottom = 3.dp))
+                        Icon(
+                            item.icon,
+                            contentDescription = item.title,
+                            modifier = Modifier.padding(bottom = 3.dp)
+                        )
                         if (selected) {
                             Box(
                                 Modifier
@@ -124,4 +136,49 @@ fun NavigationBarAnimation(selectedTabIndex: MutableState<Int>) {
     }
 }
 
+@Composable
+fun WordCards(word: WordModel, onClick: () -> Unit) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 10.dp, vertical = 7.dp)
+            .clickable {
+                onClick()
+            },
+        shape = RoundedCornerShape(15.dp),
+        elevation = 2.dp,
+        backgroundColor = Color.White
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(65.dp)
+                .padding(5.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center
+        ) {
+            Text(
+                text = word.title,
+                modifier = Modifier.padding(horizontal = 12.dp, vertical = 5.dp),
+                fontWeight = FontWeight.Bold,
+                fontSize = 18.sp,
+                textAlign = TextAlign.Center
+            )
+
+            Spacer(modifier = Modifier.width(25.dp))
+            Icon(
+                imageVector = Icons.Default.ArrowForward,
+                contentDescription = "To"
+            )
+            Spacer(modifier = Modifier.width(25.dp))
+            Text(
+                text = word.translate,
+                modifier = Modifier.padding(horizontal = 12.dp, vertical = 5.dp),
+                fontWeight = FontWeight.Bold,
+                fontSize = 18.sp,
+                textAlign = TextAlign.Center
+            )
+        }
+    }
+}
 
