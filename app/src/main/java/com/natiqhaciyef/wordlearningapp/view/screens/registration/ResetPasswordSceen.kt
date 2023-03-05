@@ -93,7 +93,6 @@ fun ResetPasswordTopView() {
 fun ResetPasswordBodyView(
     email: MutableState<String> = mutableStateOf("")
 ) {
-    var passwordVisible by remember { mutableStateOf(false) }
     Card(
         modifier = Modifier
             .fillMaxWidth(1f)
