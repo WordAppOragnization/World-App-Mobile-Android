@@ -7,14 +7,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.filled.Settings
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.material.icons.filled.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -90,14 +84,12 @@ fun NavigationBar() {
 }
 
 @Composable
-fun NavigationBarAnimation() {
+fun NavigationBarAnimation(selectedTabIndex: MutableState<Int>) {
     val navItems = listOf(
         NavItem(Icons.Filled.Home, "Home"),
-        NavItem(Icons.Filled.Favorite, "Favorites"),
+        NavItem(Icons.Filled.Notifications, "Notifications"),
         NavItem(Icons.Filled.Person, "Profile"),
-        NavItem(Icons.Filled.Settings, "Settings"),
     )
-    var selectedTabIndex = remember { mutableStateOf(0) }
 
     BottomNavigation(
         backgroundColor = Color.White,

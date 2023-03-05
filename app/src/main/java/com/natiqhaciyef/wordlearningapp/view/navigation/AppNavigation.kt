@@ -12,7 +12,7 @@ import com.natiqhaciyef.wordlearningapp.view.screens.registration.ResetPasswordS
 @Composable
 fun AppNavigation(){
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = ScreenID.RegisterScreen.name){
+    NavHost(navController = navController, startDestination = ScreenID.HomeScreen.name){
         composable(ScreenID.RegisterScreen.name){
             RegisterScreen(navController)
         }
