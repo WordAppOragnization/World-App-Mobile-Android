@@ -18,12 +18,15 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.airbnb.lottie.model.content.CircleShape
+import com.natiqhaciyef.wordlearningapp.data.model.GroupModel
 import com.natiqhaciyef.wordlearningapp.data.model.NavItem
 import com.natiqhaciyef.wordlearningapp.data.model.WordModel
 import com.natiqhaciyef.wordlearningapp.ui.theme.AppDarkTeal
@@ -159,7 +162,9 @@ fun WordCards(word: WordModel, onClick: () -> Unit) {
         ) {
             Text(
                 text = word.title,
-                modifier = Modifier.padding(horizontal = 12.dp, vertical = 5.dp),
+                modifier = Modifier
+                    .width(130.dp)
+                    .padding(horizontal = 12.dp, vertical = 5.dp),
                 fontWeight = FontWeight.Bold,
                 fontSize = 18.sp,
                 textAlign = TextAlign.Center
@@ -173,7 +178,9 @@ fun WordCards(word: WordModel, onClick: () -> Unit) {
             Spacer(modifier = Modifier.width(25.dp))
             Text(
                 text = word.translate,
-                modifier = Modifier.padding(horizontal = 12.dp, vertical = 5.dp),
+                modifier = Modifier
+                    .width(130.dp)
+                    .padding(horizontal = 12.dp, vertical = 5.dp),
                 fontWeight = FontWeight.Bold,
                 fontSize = 18.sp,
                 textAlign = TextAlign.Center
@@ -182,3 +189,25 @@ fun WordCards(word: WordModel, onClick: () -> Unit) {
     }
 }
 
+
+val groupModel = GroupModel(
+    id = 0,
+    image = Icons.Default.Bed,
+    category = "Furniture",
+    wordList = mutableListOf()
+)
+
+@Preview
+@Composable
+fun GroupCards(group: GroupModel = groupModel, onClick: () -> Unit = { }) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 10.dp, vertical = 7.dp)
+            .clickable {
+                onClick()
+            }
+    ) {
+
+    }
+}
