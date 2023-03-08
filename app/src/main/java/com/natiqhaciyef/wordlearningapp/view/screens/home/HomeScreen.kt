@@ -11,6 +11,7 @@ import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Bed
+import androidx.compose.material.icons.outlined.CarRental
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -20,11 +21,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.natiqhaciyef.wordlearningapp.data.model.GroupModel
 import com.natiqhaciyef.wordlearningapp.data.model.WordModel
 import com.natiqhaciyef.wordlearningapp.ui.theme.AppOrange
 import com.natiqhaciyef.wordlearningapp.view.components.GroupCards
 import com.natiqhaciyef.wordlearningapp.view.components.WordCards
+import com.natiqhaciyef.wordlearningapp.view.navigation.ScreenID
 
 val testList = mutableListOf<WordModel>(
     WordModel(
@@ -65,17 +68,27 @@ val testList = mutableListOf<WordModel>(
 val testGroupList = mutableListOf<GroupModel>(
     GroupModel(
         id = 0,
+        name = "Group 1",
         image = Icons.Outlined.Bed,
         category = "Furniture",
+        wordList = testList
+    ),
+    GroupModel(
+        id = 0,
+        name = "Group 2",
+        image = Icons.Outlined.CarRental,
+        category = "Cars",
         wordList = testList
     )
 )
 
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(
+    navController: NavController
+) {
     HomeTopView {
-        HomeBodyView()
+        HomeBodyView(navController)
         HomeBottomView()
     }
 }
@@ -94,9 +107,11 @@ fun HomeTopView(content: @Composable () -> Unit = { }) {
     }
 }
 
-@Preview
+//@Preview
 @Composable
-fun HomeBodyView() {
+fun HomeBodyView(
+    navController: NavController
+) {
     Spacer(modifier = Modifier.height(280.dp))
     Card(
         modifier = Modifier
@@ -106,17 +121,18 @@ fun HomeBodyView() {
         shape = RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp)
     ) {
 
-//        LazyColumn(
-//            modifier = Modifier
-//        ) {
-//            items(
-//                items = testList
-//            ) { group ->
-//                GroupCards() {
-//                    // navigation to details screen
-//                }
-//            }
-//        }
+        LazyColumn(
+            modifier = Modifier
+        ) {
+            items(
+                items = testGroupList
+            ) { group ->
+                GroupCards(group) {
+                    // navigation to words screen
+                    navController.navigate(ScreenID.WordsScreen.name)
+                }
+            }
+        }
         Spacer(modifier = Modifier.height(30.dp))
     }
 }

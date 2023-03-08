@@ -29,6 +29,7 @@ import com.airbnb.lottie.model.content.CircleShape
 import com.natiqhaciyef.wordlearningapp.data.model.GroupModel
 import com.natiqhaciyef.wordlearningapp.data.model.NavItem
 import com.natiqhaciyef.wordlearningapp.data.model.WordModel
+import com.natiqhaciyef.wordlearningapp.data.util.FontList
 import com.natiqhaciyef.wordlearningapp.ui.theme.AppDarkTeal
 import com.natiqhaciyef.wordlearningapp.ui.theme.AppLightTeal
 import com.natiqhaciyef.wordlearningapp.ui.theme.AppTeal
@@ -192,6 +193,7 @@ fun WordCards(word: WordModel, onClick: () -> Unit) {
 
 val groupModel = GroupModel(
     id = 0,
+    name = "Group 1",
     image = Icons.Default.Bed,
     category = "Furniture",
     wordList = mutableListOf()
@@ -203,11 +205,25 @@ fun GroupCards(group: GroupModel = groupModel, onClick: () -> Unit = { }) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
+            .height(100.dp)
             .padding(horizontal = 10.dp, vertical = 7.dp)
             .clickable {
                 onClick()
-            }
+            },
+        shape = RoundedCornerShape(15.dp)
     ) {
-
+        Column(
+            modifier = Modifier,
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text = "${group.name}",
+                fontSize = 25.sp,
+                color = Color.Black,
+                fontFamily = FontList.fontFamily,
+                fontWeight = FontWeight.SemiBold
+            )
+        }
     }
 }

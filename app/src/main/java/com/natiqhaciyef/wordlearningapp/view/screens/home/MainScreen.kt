@@ -7,12 +7,15 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
 import com.natiqhaciyef.wordlearningapp.view.components.NavigationBarAnimation
 
 
-@Preview
+//@Preview
 @Composable
-fun MainScreen(){
+fun MainScreen(
+    navController: NavController
+){
     val selectedIndex = remember { mutableStateOf(0) }
 
     Scaffold(
@@ -22,10 +25,10 @@ fun MainScreen(){
         it.calculateBottomPadding()
 
         when(selectedIndex.value){
-            0 -> { HomeScreen() }
+            0 -> { HomeScreen(navController) }
             1 -> { NotificationScreen() }
             2 -> { UserProfileScreen() }
-            else -> HomeScreen()
+            else -> HomeScreen(navController)
         }
     }
 }
