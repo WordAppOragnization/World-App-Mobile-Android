@@ -19,8 +19,11 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -30,6 +33,7 @@ import com.natiqhaciyef.wordlearningapp.data.model.GroupModel
 import com.natiqhaciyef.wordlearningapp.data.model.NavItem
 import com.natiqhaciyef.wordlearningapp.data.model.WordModel
 import com.natiqhaciyef.wordlearningapp.data.util.FontList
+import com.natiqhaciyef.wordlearningapp.ui.theme.AppDarkBlue
 import com.natiqhaciyef.wordlearningapp.ui.theme.AppDarkTeal
 import com.natiqhaciyef.wordlearningapp.ui.theme.AppLightTeal
 import com.natiqhaciyef.wordlearningapp.ui.theme.AppTeal
@@ -226,4 +230,41 @@ fun GroupCards(group: GroupModel = groupModel, onClick: () -> Unit = { }) {
             )
         }
     }
+}
+
+
+@Preview
+@Composable
+fun MulticoloredText(
+    selectedText: String = "",
+    unSelectedText: String = ""
+) {
+    Text(
+        modifier = Modifier
+            .width(200.dp)
+            .padding(start = 40.dp),
+        textAlign = TextAlign.Start,
+        text = buildAnnotatedString {
+            withStyle(
+                style = SpanStyle(
+                    fontSize = 35.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    fontFamily = FontList.fontFamily
+                )
+            ) {
+                withStyle(
+                    style = SpanStyle(
+                        color = AppDarkBlue,
+                    )
+                ) {
+                    append(text = selectedText)
+                }
+                withStyle(style = SpanStyle(
+                    color = Color.White
+                )) {
+                    append(text = unSelectedText)
+                }
+            }
+        }
+    )
 }

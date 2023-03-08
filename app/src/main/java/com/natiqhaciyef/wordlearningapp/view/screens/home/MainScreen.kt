@@ -25,10 +25,14 @@ fun MainScreen(
         it.calculateBottomPadding()
 
         when(selectedIndex.value){
-            0 -> { HomeScreen(navController) }
+            0 -> { HomeScreen(
+//                navController
+            ) }
             1 -> { NotificationScreen() }
             2 -> { UserProfileScreen() }
-            else -> HomeScreen(navController)
+            else -> HomeScreen(
+//                navController
+            )
         }
     }
 }
