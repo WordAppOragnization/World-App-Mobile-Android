@@ -16,6 +16,8 @@ val AppLightTeal = Color(0xff81e4c4)
 val AppTeal = Color(0xff35d4a0)
 val AppDarkTeal = Color(0xff03b57a)
 
+val AppDarkBlue = Color(0xff374a5c)
+
 val DarkBlue = Color(0xff001667)
 val Blue = Color(0xff016FC3)
 val LightBlue = Color(0xff009DE0)

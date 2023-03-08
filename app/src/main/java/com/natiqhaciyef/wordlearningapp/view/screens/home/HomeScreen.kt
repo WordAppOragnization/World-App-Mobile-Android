@@ -26,6 +26,7 @@ import com.natiqhaciyef.wordlearningapp.data.model.GroupModel
 import com.natiqhaciyef.wordlearningapp.data.model.WordModel
 import com.natiqhaciyef.wordlearningapp.ui.theme.AppOrange
 import com.natiqhaciyef.wordlearningapp.view.components.GroupCards
+import com.natiqhaciyef.wordlearningapp.view.components.MulticoloredText
 import com.natiqhaciyef.wordlearningapp.view.components.WordCards
 import com.natiqhaciyef.wordlearningapp.view.navigation.ScreenID
 
@@ -85,10 +86,12 @@ val testGroupList = mutableListOf<GroupModel>(
 
 @Composable
 fun HomeScreen(
-    navController: NavController
+//    navController: NavController
 ) {
     HomeTopView {
-        HomeBodyView(navController)
+        HomeBodyView(
+//            navController
+        )
         HomeBottomView()
     }
 }
@@ -101,8 +104,11 @@ fun HomeTopView(content: @Composable () -> Unit = { }) {
             .fillMaxSize()
             .background(AppOrange),
         verticalArrangement = Arrangement.Bottom,
-        horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        Spacer(modifier = Modifier.height(40.dp))
+
+        MulticoloredText(selectedText = "Welcome,",
+            unSelectedText = " Guess")
         content()
     }
 }
@@ -110,9 +116,9 @@ fun HomeTopView(content: @Composable () -> Unit = { }) {
 //@Preview
 @Composable
 fun HomeBodyView(
-    navController: NavController
+//    navController: NavController
 ) {
-    Spacer(modifier = Modifier.height(280.dp))
+    Spacer(modifier = Modifier.height(150.dp))
     Card(
         modifier = Modifier
             .fillMaxHeight()
@@ -128,8 +134,7 @@ fun HomeBodyView(
                 items = testGroupList
             ) { group ->
                 GroupCards(group) {
-                    // navigation to words screen
-                    navController.navigate(ScreenID.WordsScreen.name)
+//                    navController.navigate(ScreenID.WordsScreen.name)
                 }
             }
         }
