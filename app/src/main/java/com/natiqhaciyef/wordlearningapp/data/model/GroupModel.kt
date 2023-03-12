@@ -7,5 +7,9 @@ data class GroupModel(
     var name : String,
     var image: ImageVector,
     var category: String,
+    var type:String,
     var wordList: MutableList<WordModel>,
+    var level: String,
+    var wordCount: Int,
+    var isFinished:Boolean
 )

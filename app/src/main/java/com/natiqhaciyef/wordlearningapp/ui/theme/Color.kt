@@ -8,15 +8,19 @@ val Purple700 = Color(0xFF3700B3)
 val Teal200 = Color(0xFF03DAC5)
 
 
-val AppLightOrange = Color(0xffffb880)
-val AppOrange = Color(0xffff8d33)
-val AppDarkOrange = Color(0xffe66500)
-
-val AppLightTeal = Color(0xff81e4c4)
+// Main Colors
+val AppDarkGreenBlue = Color(0xff021c1e)
+val AppDarkCadetBlue = Color(0xff004445)
+val AppGreenBlue = Color(0xff2c7873)
 val AppTeal = Color(0xff35d4a0)
-val AppDarkTeal = Color(0xff03b57a)
 
+// Secondary colors
 val AppDarkBlue = Color(0xff374a5c)
+val AppDarkOrange = Color(0xFFF4511E)
+val AppOrange = Color(0xfff0810f)
+val AppLightOrange = Color(0xfff69454)
+
+
 
 val DarkBlue = Color(0xff001667)
 val Blue = Color(0xff016FC3)

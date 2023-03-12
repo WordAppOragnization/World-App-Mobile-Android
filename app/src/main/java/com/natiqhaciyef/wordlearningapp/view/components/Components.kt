@@ -1,11 +1,8 @@
 package com.natiqhaciyef.wordlearningapp.view.components
 
-import androidx.compose.animation.core.*
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -14,11 +11,8 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -28,15 +22,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.airbnb.lottie.model.content.CircleShape
 import com.natiqhaciyef.wordlearningapp.data.model.GroupModel
 import com.natiqhaciyef.wordlearningapp.data.model.NavItem
 import com.natiqhaciyef.wordlearningapp.data.model.WordModel
 import com.natiqhaciyef.wordlearningapp.data.util.FontList
-import com.natiqhaciyef.wordlearningapp.ui.theme.AppDarkBlue
-import com.natiqhaciyef.wordlearningapp.ui.theme.AppDarkTeal
-import com.natiqhaciyef.wordlearningapp.ui.theme.AppLightTeal
-import com.natiqhaciyef.wordlearningapp.ui.theme.AppTeal
+import com.natiqhaciyef.wordlearningapp.ui.theme.*
 
 @Composable
 fun BottomShadow(
@@ -126,7 +116,7 @@ fun NavigationBarAnimation(selectedTabIndex: MutableState<Int>) {
                                 Modifier
                                     .fillMaxSize()
                                     .alpha(0.4f)
-                                    .background(color = AppDarkTeal)
+                                    .background(color = AppDarkOrange)
                             )
                         }
                     }
@@ -200,16 +190,23 @@ val groupModel = GroupModel(
     name = "Group 1",
     image = Icons.Default.Bed,
     category = "Furniture",
-    wordList = mutableListOf()
+    type = "Words",
+    wordList = mutableListOf(),
+    level = "B2",
+    wordCount = 10,
+    isFinished = false
 )
 
 @Preview
 @Composable
-fun GroupCards(group: GroupModel = groupModel, onClick: () -> Unit = { }) {
+fun GroupCards(
+    group: GroupModel = groupModel,
+    onClick: () -> Unit = { }
+) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .height(100.dp)
+            .height(120.dp)
             .padding(horizontal = 10.dp, vertical = 7.dp)
             .clickable {
                 onClick()
@@ -218,16 +215,55 @@ fun GroupCards(group: GroupModel = groupModel, onClick: () -> Unit = { }) {
     ) {
         Column(
             modifier = Modifier,
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            Spacer(modifier = Modifier.height(30.dp))
             Text(
+                modifier = Modifier.fillMaxWidth(),
                 text = "${group.name}",
                 fontSize = 25.sp,
                 color = Color.Black,
                 fontFamily = FontList.fontFamily,
-                fontWeight = FontWeight.SemiBold
+                fontWeight = FontWeight.SemiBold,
+                textAlign = TextAlign.Center,
             )
+
+            Spacer(modifier = Modifier.height(15.dp))
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.Center
+            ) {
+                Spacer(modifier = Modifier.width(20.dp))
+                Text(
+                    text = buildAnnotatedString {
+                        withStyle(
+                            style = SpanStyle(
+                                fontSize = 15.sp,
+                                fontWeight = FontWeight.SemiBold,
+                                color = AppDarkBlue
+                            )
+                        ) {
+                            append("Level : ${group.level}")
+                        }
+                    }
+                )
+
+                Spacer(modifier = Modifier.width(55.dp))
+                Text(
+                    text = "${group.wordCount} items to learn",
+                    fontSize = 15.sp,
+                    color = AppOrange,
+                    fontWeight = FontWeight.SemiBold
+                )
+                Spacer(modifier = Modifier.width(55.dp))
+                Text(
+                    text = group.type,
+                    fontSize = 15.sp,
+                    color = AppDarkBlue,
+                    fontWeight = FontWeight.SemiBold
+                )
+                Spacer(modifier = Modifier.width(20.dp))
+            }
         }
     }
 }
@@ -254,14 +290,16 @@ fun MulticoloredText(
             ) {
                 withStyle(
                     style = SpanStyle(
-                        color = AppDarkBlue,
+                        color = AppOrange,
                     )
                 ) {
                     append(text = selectedText)
                 }
-                withStyle(style = SpanStyle(
-                    color = Color.White
-                )) {
+                withStyle(
+                    style = SpanStyle(
+                        color = Color.White
+                    )
+                ) {
                     append(text = unSelectedText)
                 }
             }

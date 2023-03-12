@@ -35,9 +35,9 @@ import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.natiqhaciyef.wordlearningapp.R
 import com.natiqhaciyef.wordlearningapp.data.util.FontList
-import com.natiqhaciyef.wordlearningapp.ui.theme.AppDarkTeal
-import com.natiqhaciyef.wordlearningapp.ui.theme.AppLightTeal
-import com.natiqhaciyef.wordlearningapp.ui.theme.AppOrange
+import com.natiqhaciyef.wordlearningapp.ui.theme.AppDarkCadetBlue
+import com.natiqhaciyef.wordlearningapp.ui.theme.AppGreenBlue
+import com.natiqhaciyef.wordlearningapp.ui.theme.AppDarkGreenBlue
 import com.natiqhaciyef.wordlearningapp.ui.theme.AppTeal
 import com.natiqhaciyef.wordlearningapp.view.components.BottomShadow
 import com.natiqhaciyef.wordlearningapp.view.navigation.ScreenID
@@ -102,7 +102,7 @@ fun LoginBodyView(
             .fillMaxWidth(1f)
             .fillMaxHeight(),
         shape = RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp),
-        backgroundColor = AppOrange
+        backgroundColor = AppDarkGreenBlue
     ) {
         Column(
             modifier = Modifier
@@ -135,8 +135,8 @@ fun LoginBodyView(
                 colors = TextFieldDefaults.outlinedTextFieldColors(
                     backgroundColor = Color.White,
                     textColor = Color.Black,
-                    focusedBorderColor = AppLightTeal,
-                    cursorColor = AppDarkTeal
+                    focusedBorderColor = AppGreenBlue,
+                    cursorColor = AppDarkCadetBlue
                 ),
                 shape = RoundedCornerShape(10.dp),
                 textStyle = TextStyle.Default.copy(
@@ -176,8 +176,8 @@ fun LoginBodyView(
                     backgroundColor = Color.White,
                     textColor = Color.Black,
                     trailingIconColor = Color.Black,
-                    focusedBorderColor = AppLightTeal,
-                    cursorColor = AppDarkTeal
+                    focusedBorderColor = AppGreenBlue,
+                    cursorColor = AppDarkCadetBlue
                 ),
                 shape = RoundedCornerShape(10.dp),
                 textStyle = TextStyle.Default.copy(
@@ -321,7 +321,7 @@ fun LoginBottomView(
                     navController.navigate(ScreenID.RegisterScreen.name)
                 },
             text = "Sign up",
-            color = AppLightTeal,
+            color = AppGreenBlue,
             fontSize = 15.sp,
             fontWeight = FontWeight.Bold,
         )
