@@ -1,6 +1,5 @@
 package com.natiqhaciyef.wordlearningapp.view.screens.registration
 
-import android.widget.Space
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -36,9 +35,9 @@ import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.natiqhaciyef.wordlearningapp.R
 import com.natiqhaciyef.wordlearningapp.data.util.FontList
-import com.natiqhaciyef.wordlearningapp.ui.theme.AppDarkTeal
-import com.natiqhaciyef.wordlearningapp.ui.theme.AppLightTeal
-import com.natiqhaciyef.wordlearningapp.ui.theme.AppOrange
+import com.natiqhaciyef.wordlearningapp.ui.theme.AppDarkCadetBlue
+import com.natiqhaciyef.wordlearningapp.ui.theme.AppGreenBlue
+import com.natiqhaciyef.wordlearningapp.ui.theme.AppDarkGreenBlue
 import com.natiqhaciyef.wordlearningapp.ui.theme.AppTeal
 import com.natiqhaciyef.wordlearningapp.view.components.BottomShadow
 import com.natiqhaciyef.wordlearningapp.view.navigation.ScreenID
@@ -103,7 +102,7 @@ fun RegisterBodyView(
             .fillMaxWidth(1f)
             .fillMaxHeight(),
         shape = RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp),
-        backgroundColor = AppOrange
+        backgroundColor = AppDarkGreenBlue
     ) {
         Column(
             modifier = Modifier
@@ -136,8 +135,8 @@ fun RegisterBodyView(
                 colors = TextFieldDefaults.outlinedTextFieldColors(
                     backgroundColor = Color.White,
                     textColor = Color.Black,
-                    focusedBorderColor = AppLightTeal,
-                    cursorColor = AppDarkTeal
+                    focusedBorderColor = AppGreenBlue,
+                    cursorColor = AppDarkCadetBlue
                 ),
                 shape = RoundedCornerShape(10.dp),
                 textStyle = TextStyle.Default.copy(
@@ -177,8 +176,8 @@ fun RegisterBodyView(
                     backgroundColor = Color.White,
                     textColor = Color.Black,
                     trailingIconColor = Color.Black,
-                    focusedBorderColor = AppLightTeal,
-                    cursorColor = AppDarkTeal
+                    focusedBorderColor = AppGreenBlue,
+                    cursorColor = AppDarkCadetBlue
                 ),
                 shape = RoundedCornerShape(10.dp),
                 textStyle = TextStyle.Default.copy(
@@ -308,7 +307,7 @@ fun RegisterBottomView(
                    navController.navigate(ScreenID.LoginScreen.name)
                 },
             text = "Sign in",
-            color = AppLightTeal,
+            color = AppGreenBlue,
             fontSize = 15.sp,
             fontWeight = FontWeight.Bold,
         )

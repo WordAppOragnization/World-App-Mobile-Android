@@ -1,6 +1,5 @@
 package com.natiqhaciyef.wordlearningapp.view.screens.registration
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -9,38 +8,29 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
-import androidx.compose.material.icons.filled.Lock
-import androidx.compose.material.icons.filled.Visibility
-import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
-import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.natiqhaciyef.wordlearningapp.R
 import com.natiqhaciyef.wordlearningapp.data.util.FontList
-import com.natiqhaciyef.wordlearningapp.ui.theme.AppDarkTeal
-import com.natiqhaciyef.wordlearningapp.ui.theme.AppLightTeal
-import com.natiqhaciyef.wordlearningapp.ui.theme.AppOrange
+import com.natiqhaciyef.wordlearningapp.ui.theme.AppDarkCadetBlue
+import com.natiqhaciyef.wordlearningapp.ui.theme.AppGreenBlue
+import com.natiqhaciyef.wordlearningapp.ui.theme.AppDarkGreenBlue
 import com.natiqhaciyef.wordlearningapp.ui.theme.AppTeal
 import com.natiqhaciyef.wordlearningapp.view.components.BottomShadow
-import com.natiqhaciyef.wordlearningapp.view.navigation.ScreenID
 
 @Preview
 @Composable
@@ -98,7 +88,7 @@ fun ResetPasswordBodyView(
             .fillMaxWidth(1f)
             .fillMaxHeight(),
         shape = RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp),
-        backgroundColor = AppOrange
+        backgroundColor = AppDarkGreenBlue
     ) {
         Column(
             modifier = Modifier
@@ -131,8 +121,8 @@ fun ResetPasswordBodyView(
                 colors = TextFieldDefaults.outlinedTextFieldColors(
                     backgroundColor = Color.White,
                     textColor = Color.Black,
-                    focusedBorderColor = AppLightTeal,
-                    cursorColor = AppDarkTeal
+                    focusedBorderColor = AppGreenBlue,
+                    cursorColor = AppDarkCadetBlue
                 ),
                 shape = RoundedCornerShape(10.dp),
                 textStyle = TextStyle.Default.copy(

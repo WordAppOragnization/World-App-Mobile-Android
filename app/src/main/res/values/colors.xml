@@ -8,6 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="app_orange">#ff8d33</color>
-    <color name="app_teal">#35d4a0</color>
+    <color name="app_dark_green_blue">#021c1e</color>
+    <color name="app_teal">#2c7873</color>
 </resources>
